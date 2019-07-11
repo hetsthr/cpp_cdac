@@ -1,0 +1,152 @@
+#include<iostream.h>
+#include<conio.h>
+#include<dos.h>
+#include<stdlib.h>
+float b=100000;
+class user
+{
+	private:
+		int i,j,k;
+
+	public:
+
+	       int p;
+	       int pin()
+		{
+			clrscr();
+			i=1234;
+			j=1000;
+			k=2000;
+
+			cout<<"Enter your PIN: ";
+			cin>>p;
+			if(p==i || p==j || p==k)
+			{
+				clrscr();
+				gotoxy(30,12);
+				cout<<"Welcome";
+				return p=1;
+			}
+			else
+			{
+				textbackground(2);
+				textcolor(7);
+				clrscr();
+				cout<<"Chori na karay!!";
+				return p=0;
+			}
+		}
+
+
+};
+class login : public user
+{
+      public:
+	 float a;
+	 int i;
+	 void display()
+	 {
+
+		clrscr();
+		cout<<"\n\tPlease Collect your cash";
+		cout<<"\n\tPress any key to home menu....";
+		getch();
+		menu();
+	 }
+
+	void bal()
+	 {
+		clrscr();
+
+		b=b-a;
+		gotoxy(30,1);
+		cout<<"--------Balance Inq---------";
+		gotoxy(1,2);
+		cout<<"Your current balance is :"<<b;
+		gotoxy(50,24);
+		cout<<"Press any key to home....";
+		getch();
+		menu();
+
+	 }
+	 void withdraw()
+	 {
+
+		char y;
+		clrscr();
+		gotoxy(30,12);
+		cout<<"--------Withdraw--------";
+		cout<<"\n\tEnter the amount you want to withdraw : ";
+		a=0;
+		cin>>a;
+		if(a>b)
+		{
+			cout<<"Limit ma reh bhai!";
+			menu();
+		}
+		else
+		{
+			cout<<"Are you sure? you want to withdraw: INR"<<a;
+			cout<<"\nY/N?";
+			cin>>y;
+			if(y=='y')
+			{
+				display();
+			}
+			else if(y=='n')
+			{
+				menu();
+			}
+		}
+
+	}
+
+	 void entry()
+		{
+
+
+		       do
+		       {
+				pin();
+		       }
+		       while(p!=1);
+		       menu();
+		}
+
+	 void menu()
+		{
+
+		       clrscr();
+		       cout<<"\nChoose your option:"<<endl;
+		       cout<<"\n\t1) Balance Inq"
+			   <<"\n\t2) Withdraw"
+			   <<"\n\t3) Exit\n";
+		       cin>>i;
+		       switch(i)
+		       {
+				case 1:
+					bal();
+					break;
+				case 2:
+					withdraw();
+					break;
+				case 3:
+					exit(0);
+		       }
+
+		}
+};
+void main()
+{
+	login l;
+	clrscr();
+	gotoxy(33,12);
+	cout<<"Het Mit Bank"<<endl;
+	gotoxy(30,13);
+	cout<<"---Welcomes You---"<<endl;
+	getch();
+	l.entry();
+
+getch();
+}
+
